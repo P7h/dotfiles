@@ -15,6 +15,7 @@ export HISTCONTROL=ignoreboth:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
+shopt -s histverify
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000000
@@ -204,3 +205,5 @@ complete -F _completemarks jump unmark
 ########################################################################################
 
 export LANG="en_US:en"
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
