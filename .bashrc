@@ -74,94 +74,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-
-########################################################################################
-### Aliases
-alias install="sudo apt-get install"
-alias poweroff="sudo shutdown -h now"
- 
-alias cd..='cd ..'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias d='ls'
-alias df='df -h -x supermount'
-alias du='du -h'
-alias egrep='egrep --color'
-alias fgrep='fgrep --color'
-alias grep='grep --color'
-alias l='ls'
-alias la='ls -a'
-alias ll='ls -lh'
-alias ls='ls -F --color=auto'
-alias lsd='ls -d */'
-alias md='mkdir -p'
-alias mkdir='mkdir -pv'
-alias p='cd -'
-alias rd='rmdir'
-alias del='rm'
-alias cls='clear'
-alias bc='bc -l'
- 
-alias path='echo -e ${PATH//:/\\n}'
-alias nowtime='date +%T'
-alias nowdate='date +"%d-%m-%Y"'
-#alias now='date +"%D %T"'
-alias now='date +"%A, %d-%m-%Y %T %z %Z"'
- 
-alias vi='sudo vim "+set nu"'
-alias svi='sudo vi'
-alias vis='vim "+set si"'
-alias edit='vim'
- 
-alias ping='ping -c 5'
-alias root='sudo -i'
-alias su='sudo -i'
- 
-alias wget='wget -c'
-alias man="man -a"
-########################################################################################
-
-
 ########################################################################################
 ### My JumpTos
 #!/bin/bash
@@ -205,5 +117,8 @@ complete -F _completemarks jump unmark
 ########################################################################################
 
 export LANG="en_US:en"
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+# Write command first to history file and then execute the command.
+# Has its own side effects. So, commented it out for the timebeing.
+# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+source ~/.aliases
